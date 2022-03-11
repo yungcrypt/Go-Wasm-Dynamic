@@ -2,16 +2,9 @@ import React, { Suspense, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Helmet } from "react-helmet";
-import {TheHelm} from "./Helmet";
-
-declare function addNumbers(
-    arg0: Number,
-    arg1: Number
-): Promise<Number>;
-declare function divideNumbers(
-    arg0: Number,
-    arg1: Number
-): Promise<Number>;
+import { TheHelm } from "./Helmet";
+declare function addNumbers(arg0: Number, arg1: Number): Promise<Number>;
+declare function divideNumbers(arg0: Number, arg1: Number): Promise<Number>;
 function App() {
   const [divideLoad, setDivideLoad] = useState(false);
 
@@ -20,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TheHelm addLoad={addLoad} divideLoad={divideLoad}/>
+        <TheHelm addLoad={addLoad} divideLoad={divideLoad} />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -70,7 +63,9 @@ function App() {
                     }
 
                     if (
-                      theState === "add" && divideLoad && addLoad &&
+                      theState === "add" &&
+                      divideLoad &&
+                      addLoad &&
                       e.target.value !== ""
                     ) {
                       console.log(addNumbers(parseInt(e.target.value), 2));
